@@ -1,120 +1,1056 @@
-    <section id="menu-gallery">
-        <h2 class="section-title">Menu Favorit Gallery</h2>
-        <p class="section-subtitle">Sajian estetis nan lezat dengan harga yang ramah di kantong mahasiswa</p>
-        
-        <div class="menu-tabs">
-            <button class="tab-btn active" data-filter="all">Semua Menu</button>
-            <button class="tab-btn" data-filter="coffee">Coffee Shop</button>
-            <button class="tab-btn" data-filter="bakery">Bakery Shop</button>
-            <button class="tab-btn" data-filter="dessert">Dessert Shop</button>
-            <button class="tab-btn" data-filter="snack">Makanan Ringan</button>
-        </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autumn Leaf Cafe & Bakery | Grand Menu</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --kopi: #4A3018;
+            --beige: #F5F5DC;
+            --cream: #FAF0E6;
+            --merah-bata: #A5402D;
+            --vanilla: #F3E5AB;
+        }
 
-        <div class="gallery-grid">
-            
-            <div class="menu-item coffee show">
-                <div class="menu-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=600" alt="Autumn Latte">
-                </div>
-                <div class="menu-info">
-                    <div class="menu-meta">
-                        <h3 class="menu-title">Autumn Spiced Latte</h3>
-                        <span class="menu-price">Rp 18k</span>
-                    </div>
-                    <p class="menu-desc">Espresso dengan sentuhan susu vanilla lembut beraroma kayu manis khas musim gugur.</p>
-                </div>
-            </div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-            <div class="menu-item coffee show">
-                <div class="menu-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="Classic V60">
-                </div>
-                <div class="menu-info">
-                    <div class="menu-meta">
-                        <h3 class="menu-title">Vintage Manual Brew</h3>
-                        <span class="menu-price">Rp 15k</span>
-                    </div>
-                    <p class="menu-desc">Seduhan manual biji kopi pilihan lokal Sumatera dengan notes rasa yang clean dan segar.</p>
-                </div>
-            </div>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--kopi);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-            <div class="menu-item bakery show">
-                <div class="menu-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600" alt="Croissant">
-                </div>
-                <div class="menu-info">
-                    <div class="menu-meta">
-                        <h3 class="menu-title">Butter Croissant</h3>
-                        <span class="menu-price">Rp 14k</span>
-                    </div>
-                    <p class="menu-desc">Pastry berlapis yang renyah di luar dan lembut di dalam, cocok teman nugas.</p>
-                </div>
-            </div>
+        /* Background Vintage Autumn */
+        .bg-autumn {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            opacity: 0.4;
+            filter: sepia(0.5) contrast(1.1);
+        }
 
-            <div class="menu-item bakery show">
-                <div class="menu-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600" alt="Sourdough">
-                </div>
-                <div class="menu-info">
-                    <div class="menu-meta">
-                        <h3 class="menu-title">Toast Vanilla Sugar</h3>
-                        <span class="menu-price">Rp 12k</span>
-                    </div>
-                    <p class="menu-desc">Roti panggang klasik renyah dengan taburan gula vanilla dan mentega hangat.</p>
-                </div>
-            </div>
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(250, 240, 230, 0.88);
+            z-index: -1;
+        }
 
-            <div class="menu-item dessert show">
-                <div class="menu-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=600" alt="Chocolate Cake">
-                </div>
-                <div class="menu-info">
-                    <div class="menu-meta">
-                        <h3 class="menu-title">Glitter Chocolate Cake</h3>
-                        <span class="menu-price">Rp 22k</span>
-                    </div>
-                    <p class="menu-desc">Kue cokelat pekat berlapis ganache dengan sentuhan kilau bubuk vanilla yang cantik.</p>
-                </div>
-            </div>
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
 
-            <div class="menu-item dessert show">
-                <div class="menu-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&q=80&w=600" alt="Strawberry Tart">
-                </div>
-                <div class="menu-info">
-                    <div class="menu-meta">
-                        <h3 class="menu-title">Mini Berries Tart</h3>
-                        <span class="menu-price">Rp 18k</span>
-                    </div>
-                    <p class="menu-desc">Kulit tart renyah dengan isian krim custard lembut dan toping buah beri segar.</p>
-                </div>
-            </div>
+        .glitter-text {
+            background: linear-gradient(to right, var(--vanilla), #d4af37, var(--kopi), #d4af37, var(--vanilla));
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+            text-shadow: 0 0 2px rgba(243, 229, 171, 0.3);
+        }
 
-            <div class="menu-item snack show">
-                <div class="menu-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1621800043295-a73fe2f76e2c?auto=format&fit=crop&q=80&w=600" alt="Truffle Fries">
-                </div>
-                <div class="menu-info">
-                    <div class="menu-meta">
-                        <h3 class="menu-title">Crispy Seaweed Fries</h3>
-                        <span class="menu-price">Rp 15k</span>
-                    </div>
-                    <p class="menu-desc">Kentang goreng renyah dengan taburan bumbu rumput laut gurih, pas untuk sharing.</p>
-                </div>
-            </div>
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
 
-            <div class="menu-item snack show">
-                <div class="menu-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&q=80&w=600" alt="Platter">
-                </div>
-                <div class="menu-info">
-                    <div class="menu-meta">
-                        <h3 class="menu-title">Mini Snack Platter</h3>
-                        <span class="menu-price">Rp 25k</span>
-                    </div>
-                    <p class="menu-desc">Kombinasi sosis, nugget, dan onion ring yang pas dinikmati bareng teman sekelompok.</p>
-                </div>
-            </div>
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(74, 48, 24, 0.95);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: 0.4s;
+        }
 
+        header.scrolled {
+            padding: 12px 50px;
+            background: rgba(74, 48, 24, 1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--merah-bata);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: var(--beige);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--vanilla);
+            text-shadow: 0 0 8px var(--vanilla);
+        }
+
+        #hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1920&auto=format&fit=crop') center/cover;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(74, 48, 24, 0.65);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: var(--cream);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            max-width: 700px;
+            color: var(--beige);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--merah-bata);
+            color: var(--cream);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(165, 64, 45, 0.4);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--cream);
+            color: var(--kopi);
+        }
+
+        section {
+            padding: 100px 8% 40px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            color: var(--kopi);
+            margin-bottom: 40px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--merah-bata);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(250, 240, 230, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(74, 48, 24, 0.06);
+            transition: 0.3s ease;
+            border-bottom: 3px solid var(--merah-bata);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            color: var(--kopi);
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .card-content p {
+            font-size: 0.85rem;
+            color: #614124;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            color: var(--merah-bata);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: auto;
+        }
+
+        footer {
+            background: var(--kopi);
+            color: var(--beige);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--merah-bata);
+            margin-top: 50px;
+        }
+
+        footer span {
+            color: var(--merah-bata);
+        }
+
+        @media (max-width: 992px) {
+            header { padding: 15px 30px; }
+            nav ul { gap: 10px; }
+            nav ul li a { font-size: 0.7rem; }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-autumn"></div>
+    <div class="bg-overlay"></div>
+
+    <header id="navbar">
+        <a href="#" class="logo">Autumn Leaf <span>Cafe</span></a>
+        <nav>
+            <ul>
+                <li><a href="#makanan">Makanan (20)</a></li>
+                <li><a href="#minuman">Minuman (20)</a></li>
+                <li><a href="#dessert">Dessert (20)</a></li>
+                <li><a href="#pencuci-mulut">Pencuci Mulut (20)</a></li>
+                <li><a href="#eskrim">Es Krim (20)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="glitter-text">Grand Menu Edition</h1>
+            <p>100 Pilihan menu lezat, manis, dan menyegarkan yang dikurasi khusus dengan porsi pas dan harga super ramah kantong mahasiswa.</p>
+            <a href="#makanan" class="btn">Jelajahi 100 Menu</a>
         </div>
     </section>
+
+	<section id="makanan">
+		<h2 class="section-title">Kategori Makanan Utama & Mie</h2>
+		<div class="grid-container">
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Goreng Kampung</h3>
+					<p>Nasi goreng bumbu tradisional dengan telur mata sapi.</p>
+					<p class="price">Rp 18.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Daging Sambalado</h3>
+					<p>Nasi putih hangat dengan potongan daging sapi balado pedas.</p>
+					<p class="price">Rp 25.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Ayam Geprek</h3>
+					<p>Ayam goreng garing digeprek sambal bawang super pedas.</p>
+					<p class="price">Rp 20.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Mie Goreng Spesial</h3>
+					<p>Mie kuning tumis khas Medan dengan sayur dan telur.</p>
+					<p class="price">Rp 16.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Mie Rebus Kuah Kental</h3>
+					<p>Mie rebus dengan kuah kaldu kental gurih khas Sumatra.</p>
+					<p class="price">Rp 17.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Mie Ayam Autumn</h3>
+					<p>Mie kenyal dengan topping ayam kecap manis gurih.</p>
+					<p class="price">Rp 18.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Goreng Gila</h3>
+					<p>Nasi goreng dengan tumisan bakso, sosis, dan sayur melimpah.</p>
+					<p class="price">Rp 19.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Ayam Bakar Madu</h3>
+					<p>Ayam bakar bumbu kecap madu meresap sampai ke dalam.</p>
+					<p class="price">Rp 22.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Mie Pangsit Goreng</h3>
+					<p>Mie pangsit garing dengan taburan ayam cincang.</p>
+					<p class="price">Rp 18.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Bihun Goreng Seafood</h3>
+					<p>Bihun lembut ditumis dengan udang dan bakso ikan.</p>
+					<p class="price">Rp 21.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Kwetiau Siram Sapi</h3>
+					<p>Kwetiau kenyal dengan siraman kuah telur kental dan daging.</p>
+					<p class="price">Rp 23.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Omellete Sosis</h3>
+					<p>Nasi hangat ditutup telur dadar tebal isi sosis sapi.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Mie Instan Kekinian Plus</h3>
+					<p>Mie instan kuah/goreng lengkap dengan keju, telur, sosis.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Ayam Saus Mentega</h3>
+					<p>Potongan ayam goreng tepung disiram saus mentega gurih.</p>
+					<p class="price">Rp 21.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Goreng Seafood</h3>
+					<p>Nasi goreng dengan potongan cumi dan udang segar.</p>
+					<p class="price">Rp 22.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Mie Aceh Tumis</h3>
+					<p>Mie besar bumbu rempah aceh pedas gurih kaya rasa.</p>
+					<p class="price">Rp 19.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Gila original</h3>
+					<p>Nasi putih dengan topping tumis sosis, bakso, telur pedas.</p>
+					<p class="price">Rp 17.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Kwetiau Goreng Medan</h3>
+					<p>Kwetiau goreng gurih dengan tauge dan telur bebek.</p>
+					<p class="price">Rp 18.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nasi Ayam Cabe Ijo</h3>
+					<p>Nasi putih dengan ayam goreng ungkep bumbu sambal ijo.</p>
+					<p class="price">Rp 20.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Ramen Kuah Pedas</h3>
+					<p>Mie kuah pedas ala Jepang dengan telur rebus dan rumput laut.</p>
+					<p class="price">Rp 24.000</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="minuman">
+		<h2 class="section-title">Kategori Minuman Hangat & Dingin</h2>
+		<div class="grid-container">
+			<div class="card">
+				<div class="card-content">
+					<h3>Coklat Panas Murni</h3>
+					<p>Seduhan coklat kental hangat yang menenangkan.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Teh Manis Panas</h3>
+					<p>Teh melati wangi diseduh hangat dengan gula murni.</p>
+					<p class="price">Rp 8.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Teh Matcha Latte Hot</h3>
+					<p>Matcha Jepang asli dipadu dengan susu hangat.</p>
+					<p class="price">Rp 16.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Buah Segar</h3>
+					<p>Potongan buah segar sirup manis dan es serut.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Jeruk Peras</h3>
+					<p>Perasan jeruk asli Medan yang segar kaya vitamin C.</p>
+					<p class="price">Rp 10.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Lemon Tea</h3>
+					<p>Kombinasi teh segar dan perasan lemon asli.</p>
+					<p class="price">Rp 11.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Kopi Susu Aren</h3>
+					<p>Espresso, susu segar, dan gula aren premium.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Matcha Latte Ice</h3>
+					<p>Matcha dingin kocok dengan susu segar creamy.</p>
+					<p class="price">Rp 17.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Taro Milkshake Ice</h3>
+					<p>Minuman rasa taro manis ungu dengan topping sedotan.</p>
+					<p class="price">Rp 16.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Teh Manis Jumbo</h3>
+					<p>Teh manis dingin porsi besar pelepas dahaga.</p>
+					<p class="price">Rp 7.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Cappuccino</h3>
+					<p>Kopi cappucino dingin dengan buih susu lembut.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Hot Americano</h3>
+					<p>Kopi hitam espresso shot murni tanpa gula.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Ice Cafe Latte</h3>
+					<p>Kombinasi espresso lembut dan susu dingin.</p>
+					<p class="price">Rp 16.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Soda Gembira</h3>
+					<p>Perpaduan sirup coco pandan, soda, dan susu kental.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Strawberry Mojito</h3>
+					<p>Sirup stroberi, daun mint, lemon, dan soda segar.</p>
+					<p class="price">Rp 16.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Vanilla Milkshake</h3>
+					<p>Susu vanilla blend padat dingin yang manis.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Hot Ginger Tea</h3>
+					<p>Teh hangat jahe geprek berkhasiat menghangatkan tubuh.</p>
+					<p class="price">Rp 10.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Chocolate Ice Blend</h3>
+					<p>Es coklat blender melimpah dengan parutan coklat.</p>
+					<p class="price">Rp 16.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Lychee Tea</h3>
+					<p>Teh rasa leci segar dengan buah leci asli di dalamnya.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Hot Cafe Mocha</h3>
+					<p>Perpaduan espresso hangat, coklat, dan susu foam.</p>
+					<p class="price">Rp 17.000</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="dessert">
+		<h2 class="section-title">Kategori Dessert Premium</h2>
+		<div class="grid-container">
+			<div class="card">
+				<div class="card-content">
+					<h3>Kue Tiramisu Cup</h3>
+					<p>Lapisan krim keju lembut dan biskuit rasa kopi.</p>
+					<p class="price">Rp 18.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Silky Vanilla Pudding</h3>
+					<p>Puding sutra vanilla lembut saus karamel.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Autumn Slice Cake</h3>
+					<p>Potongan kue bolu lembut berlapis krim vanilla.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Chocolate Lava Cake</h3>
+					<p>Kue coklat panggang dengan coklat leleh di dalam.</p>
+					<p class="price">Rp 19.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Cheese Cake Slice</h3>
+					<p>Kue keju panggang lembut bertekstur creamy lumer.</p>
+					<p class="price">Rp 20.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Red Velvet Cake</h3>
+					<p>Potongan kue red velvet cantik dengan cream cheese.</p>
+					<p class="price">Rp 18.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Churros Saus Coklat</h3>
+					<p>Donat spanyol garing dengan cocolan coklat hangat.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Fudge Brownies</h3>
+					<p>Kue brownies panggang padat, coklat banget.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Macaron Isi 3</h3>
+					<p>Kue mungil renyah warna-warni isi krim manis.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Panna Cotta Strawberry</h3>
+					<p>Puding krim khas Italia dengan selai stroberi asam manis.</p>
+					<p class="price">Rp 16.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Waffle Oreo Vanilla</h3>
+					<p>Waffle garing dengan es krim vanilla dan remahan oreo.</p>
+					<p class="price">Rp 17.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Creme Brulee</h3>
+					<p>Puding kustar lembut dengan lapisan gula gosong garing.</p>
+					<p class="price">Rp 18.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Mochi Ice Cream</h3>
+					<p>Kue mochi kenyal isi es krim aneka rasa.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Banana Split Dessert</h3>
+					<p>Pisang segar dengan tiga scoop es krim melimpah.</p>
+					<p class="price">Rp 19.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Eclair Chocolate</h3>
+					<p>Kue sus panjang isi vla vanilla siram coklat.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Apple Pie Slice</h3>
+					<p>Pai isi apel malang bumbu kayu manis harum.</p>
+					<p class="price">Rp 16.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Strawberry Shortcake</h3>
+					<p>Kue spons ringan dengan krim putih dan stroberi.</p>
+					<p class="price">Rp 18.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Matcha Mille Crepes</h3>
+					<p>Kue dadar berlapis-lapis krim matcha lembut.</p>
+					<p class="price">Rp 17.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Cinnamon Roll</h3>
+					<p>Roti gulung kayu manis empuk siram gula cair.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Blueberry Cheese Tart</h3>
+					<p>Tart renyah isi krim keju dan selai blueberry segar.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="pencuci-mulut">
+		<h2 class="section-title">Kategori Cemilan & Pencuci Mulut</h2>
+		<div class="grid-container">
+			<div class="card">
+				<div class="card-content">
+					<h3>Singkong Goreng Keju</h3>
+					<p>Singkong empuk merekah bertabur keju parut gurih.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Pisang Bakar Coklat</h3>
+					<p>Pisang kepok bakar siram susu kental manis dan coklat.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Roti Bakar Bandung Srikaya</h3>
+					<p>Roti bakar tebal selai srikaya manis khas.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>French Fries Original</h3>
+					<p>Kentang goreng renyah bumbu garam gurih.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Cireng Bumbu Rujak</h3>
+					<p>Cireng goreng garing cocolan sambal rujak manis pedas.</p>
+					<p class="price">Rp 11.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Sosis Bakar Jumbo</h3>
+					<p>Sosis sapi bakar besar oles saus bbq dan mayo.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Bakso Goreng Crispy</h3>
+					<p>Bakso ayam goreng tepung garing cocol saus sambal.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Tahu Walik Crispy</h3>
+					<p>Tahu isi aci goreng renyah luar lembut dalam.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Dimsum Ayam (Isi 4)</h3>
+					<p>Dimsum kukus isi daging ayam padat gurih hangat.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Pangsit Goreng Mayo</h3>
+					<p>Pangsit isi ayam goreng renyah cocol mayo gurih.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Nugget Ayam Goreng</h3>
+					<p>Nugget ayam pilihan digoreng keemasan.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Onion Ring Garing</h3>
+					<p>Bawang bombay goreng tepung renyah bumbu sedap.</p>
+					<p class="price">Rp 11.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Kulit Ayam Crispy</h3>
+					<p>Kulit ayam goreng tepung super garing kriuk bumbu.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Sandwich Telur Keju</h3>
+					<p>Roti tumpuk isi telur ceplok, keju slice, dan selada.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Risoles Rogout Ayam</h3>
+					<p>Risoles goreng isi sayuran dan rogout ayam creamy.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Kebab Mini Sapi</h3>
+					<p>Kebab ukuran personal isi daging sapi dan sayur.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Otak-Otak Goreng</h3>
+					<p>Otak-otak ikan digoreng hangat tabur bumbu balado.</p>
+					<p class="price">Rp 11.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Roti Goreng Isi Coklat</h3>
+					<p>Roti goreng empuk isi coklat lumer saat digigit.</p>
+					<p class="price">Rp 10.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Ketan Susu Keju</h3>
+					<p>Ketan putih pulen siram susu kental bertabur keju.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Jasuke Manis</h3>
+					<p>Jagung manis pipil hangat campur susu dan keju melimpah.</p>
+					<p class="price">Rp 10.000</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="eskrim">
+		<h2 class="section-title">Kategori Varian Es Krim</h2>
+		<div class="grid-container">
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Vanilla Classic</h3>
+					<p>Dua scoop es krim vanilla murni super lembut.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Double Chocolate</h3>
+					<p>Es krim coklat pekat dengan taburan choco chips.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Sweet Strawberry</h3>
+					<p>Es krim rasa stroberi segar asam manis seimbang.</p>
+					<p class="price">Rp 12.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Matcha Greentea</h3>
+					<p>Es krim aroma matcha Jepang otentik sedikit pahit manis.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Cookies & Cream</h3>
+					<p>Es krim vanilla campur remahan biskuit hitam oreo.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Taro Delight</h3>
+					<p>Es krim rasa talas ungu manis lembut harum.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Mango Sorbet</h3>
+					<p>Es krim sorbet mangga segar buah asli tanpa susu.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Salted Caramel</h3>
+					<p>Es krim karamel manis gurih paduan garam laut tipis.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Mint Choco Chip</h3>
+					<p>Es krim mint segar dingin dipadu serpihan coklat manis.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Avocado Creamy</h3>
+					<p>Es krim rasa alpukat mentega kental lezat.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Coffee Mocha</h3>
+					<p>Es krim aroma kopi espresso padu saus coklat.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Durian Medan</h3>
+					<p>Es krim rasa durian asli Medan wangi melimpah.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Red Velvet Crumbs</h3>
+					<p>Es krim dengan taburan kue red velvet garing.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Tiramisu Twist</h3>
+					<p>Es krim tiramisu dengan siraman sirup kopi pekat.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Bubblegum Sky</h3>
+					<p>Es krim warna biru ceria rasa permen karet manis.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Tiga Rasa (Neapolitan)</h3>
+					<p>Kombinasi klasik tiga rasa: Coklat, Vanilla, Stroberi.</p>
+					<p class="price">Rp 15.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Choco Peanut Butter</h3>
+					<p>Es krim coklat padu selai kacang gurih.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Cotton Candy</h3>
+					<p>Es krim manis harum aroma gulali merah muda.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Blueberry Swirl</h3>
+					<p>Es krim yogurt vanilla dengan pusaran selai blueberry.</p>
+					<p class="price">Rp 14.000</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-content">
+					<h3>Es Krim Sundae Caramel</h3>
+					<p>Es krim vanilla soft siram saus karamel lengket manis.</p>
+					<p class="price">Rp 13.000</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+    <footer>
+        <p>&copy; 2026 Autumn Leaf Cafe & Bakery. Dibuat dengan <span>&hearts;</span> di Kota Medan.</p>
+    </footer>
+
+    <!-- Script Navbar Transisi Efek Scroll -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>
